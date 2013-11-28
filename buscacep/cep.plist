@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bairro</key>
+	<string>%(bairro)s</string>
+	<key>cep</key>
+	<string>%(cep)s</string>
+	<key>cidade</key>
+	<string>%(cidade)s</string>
+	<key>logradouro</key>
+	<string>%(logradouro)s</string>
+	<key>resultado</key>
+	<integer>%(resultado)s</integer>
+	<key>resultado_txt</key>
+	<string>%(resultado_txt)s</string>
+	<key>uf</key>
+	<string>%(uf)s</string>
+</dict>
+</plist>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<webservicecep>
+	<resultado>%(resultado)s</resultado>
+	<resultado_txt>%(resultado_txt)s</resultado_txt>
+	<logradouro>%(logradouro)s</logradouro>
+	<bairro>%(bairro)s</bairro>
+	<cidade>%(cidade)s</cidade>	
+	<uf>%(uf)s</uf>
+	<cep>%(cep)s</cep>	
+</webservicecep>
+
+
