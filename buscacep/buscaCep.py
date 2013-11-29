@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8-*-
 import os
+import sys
 import json
 import urllib
 import urllib2
@@ -49,7 +50,7 @@ def cep_json_javascript_xml(cep,formato):
             cidade = cidade_estado[0]
             estado = cidade_estado[1].strip('/')
             cep = values[3].get_text().strip()            
-        else:
+        elif len(value) < 2:
             resultado=2
             resultado_txt = "Sucesso cep unico"
             logradouro = ""
@@ -58,15 +59,22 @@ def cep_json_javascript_xml(cep,formato):
             cidade = cidade_estado[0]
             estado = cidade_estado[1].strip('/')
             cep = values[1].get_text().strip()
+        else:
+            resultado = 0
+            resultado_txt = "Servico indisponivel ou cep invalido"
+            logradouro = ""
+            bairro = ""
+            cidade = ""
+            estado = ""
+            cep = ""
 
     except:
-        resultado = 0
-        resultado_txt = "Servico indisponivel ou cep invalido"
-        logradouro = ""
-        bairro = ""
-        cidade = ""
-        estado = ""
-        cep = ""
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        file = exc_tb.tb_frame.f_code.co_filename
+        retorno = json.dumps({'cod': 400, 'msg': 'Type: %s, Error: %s, File: %s, Line %s' % (exc_type, exc_obj, file, exc_tb.tb_lineno)})
+        return retorno,formato
+
+        
         
     dict_json = {'resultado': resultado, 'resultado_txt': resultado_txt, 'logradouro' :logradouro, 'bairro': bairro, 'cidade': cidade, 'uf': estado, 'cep':cep}
     
