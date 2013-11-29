@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+# -*- coding: utf-8-*-
 from django.views.generic import View
 from django.http.response import HttpResponse
 
@@ -13,4 +15,4 @@ class BuscaCep(View):
             retorno = cep_json_javascript_xml(cep,formato)
             return HttpResponse(retorno[0], content_type="application/"+retorno[1])
         else:
-            return HttpResponse("error")
+            return HttpResponse("Informe um cep válido por get. Ex: /buscacep/?cep=********&formato=(json/xml/plist/javascript)")
