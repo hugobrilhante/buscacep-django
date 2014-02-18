@@ -42,14 +42,14 @@ def cep_json_javascript_xml(cep,formato):
             resultado=1
             resultado_txt = "Sucesso cep completo"
             #remove outras informacoes que vem junto ao logradouro. Exemplo: - de 1000 a 2000 e impar
-            logradouro = (values[0].get_text().strip()).split('-')
+            logradouro = (values[0].text.strip()).split('-')
             logradouro = logradouro[0]
             #extrai os valores das tags
-            bairro = values[1].get_text().strip()
-            cidade_estado = values[2].get_text().split()
+            bairro = values[1].text.strip()
+            cidade_estado = values[2].text.split()
             cidade = cidade_estado[0]
             estado = cidade_estado[1].strip('/')
-            cep = values[3].get_text().strip()            
+            cep = values[3].text.strip()
         elif len(values) < 2:
             resultado=2
             resultado_txt = "Sucesso cep unico"
@@ -71,12 +71,18 @@ def cep_json_javascript_xml(cep,formato):
     except:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         file = exc_tb.tb_frame.f_code.co_filename
-        retorno = json.dumps({'cod': 404, 'msg': 'Type: %s, Error: %s, File: %s, Line %s' % (exc_type, exc_obj, file, exc_tb.tb_lineno)})
+        retorno = json.dumps({'msg': 'type: %s, error: %s, file: %s, line %s' % (exc_type, exc_obj, file, exc_tb.tb_lineno)})
         return retorno,formato
 
         
         
-    dict_json = {'resultado': resultado, 'resultado_txt': resultado_txt, 'logradouro' :logradouro, 'bairro': bairro, 'cidade': cidade, 'uf': estado, 'cep':cep}
+    dict_json = {'resultado': resultado,
+                 'resultado_txt': resultado_txt,
+                 'logradouro' :logradouro,
+                 'bairro': bairro,
+                 'cidade': cidade,
+                 'uf': estado,
+                 'cep':cep}
     
    
     if formato == 'json':
