@@ -50,7 +50,7 @@ def cep_json_javascript_xml(cep,formato):
             cidade = cidade_estado[0]
             estado = cidade_estado[1].strip('/')
             cep = values[3].get_text().strip()            
-        elif len(value) < 2:
+        elif len(values) < 2:
             resultado=2
             resultado_txt = "Sucesso cep unico"
             logradouro = ""
@@ -71,7 +71,7 @@ def cep_json_javascript_xml(cep,formato):
     except:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         file = exc_tb.tb_frame.f_code.co_filename
-        retorno = json.dumps({'cod': 400, 'msg': 'Type: %s, Error: %s, File: %s, Line %s' % (exc_type, exc_obj, file, exc_tb.tb_lineno)})
+        retorno = json.dumps({'cod': 404, 'msg': 'Type: %s, Error: %s, File: %s, Line %s' % (exc_type, exc_obj, file, exc_tb.tb_lineno)})
         return retorno,formato
 
         
